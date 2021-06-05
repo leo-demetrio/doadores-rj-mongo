@@ -30,5 +30,13 @@ router.get('/institut', async (req,res) => {
         return res.send({'message':'error'});
     }
 });
-
+router.get('/institut/:id', async (req,res) => {
+    try{
+        const institut = await Institut.getOneI(req.params.id);
+        return res.send({ institut });
+    }catch($e){
+        console.log("Error" , $e);
+        return res.send({'message':'error'});
+    }
+});
 module.exports = router;
