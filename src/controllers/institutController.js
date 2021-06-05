@@ -11,9 +11,9 @@ router.post('/institut', async (req,res) => {
         return res.send({'message':'error'});
     }
 });
-router.get('/institut/search', async (req,res) => {
+router.get('/institut/search/:search', async (req,res) => {
     try{
-        const institut = await Institut.search();
+        const institut = await Institut.search(req.params.search);
         return res.send({ institut });
     }catch($e){
         console.log("Error" , $e);
@@ -32,7 +32,25 @@ router.get('/institut', async (req,res) => {
 });
 router.get('/institut/:id', async (req,res) => {
     try{
-        const institut = await Institut.getOneI(req.params.id);
+        const institut = await Institut.getOne(req.params.id);
+        return res.send({ institut });
+    }catch($e){
+        console.log("Error" , $e);
+        return res.send({'message':'error'});
+    }
+});
+router.put('/institut/:id', async (req,res) => {
+    try{
+        const institut = await Institut.update(req.params.id,req.body);
+        return res.send({ institut });
+    }catch($e){
+        console.log("Error" , $e);
+        return res.send({'message':'error'});
+    }
+});
+router.delete('/institut/:id', async (req,res) => {
+    try{
+        const institut = await Institut.delete(req.params.id);
         return res.send({ institut });
     }catch($e){
         console.log("Error" , $e);
