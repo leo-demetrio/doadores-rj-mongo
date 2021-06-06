@@ -1,4 +1,4 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://user_admin:20202020@cluster0.ocmtm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{ useNewUrlParser:true,useUnifiedTopology: true});
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser:true,useUnifiedTopology: true,useCreateIndex: true});
 module.exports = mongoose;

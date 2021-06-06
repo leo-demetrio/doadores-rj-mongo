@@ -1,13 +1,13 @@
 require('dotenv').config();
 const express = require('express');
-//var cors = require('cors')
+var cors = require('cors')
 //const routes = require('./routes');
 //const { check } = require('express-validator');
 require('./database/connectMongo');
 
 const app = express();
 const port = process.env.PORT || 3000;
-//app.use(cors());
+app.use(cors());
 // app.use((req,res,next) => {
 //     res.header("Access-Control-Allow-Origin","*");
 //     app.use(cors());
